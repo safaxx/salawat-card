@@ -1,0 +1,235 @@
+* {
+  /* Universal selector - applies to all elements */
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
+}
+
+body {
+  text-align: center; /* Center all text content */
+  background-color: #f1e4d2; /* Light beige background color */
+  font-family: "Amiri", serif; /* Default font for Arabic text */
+  min-height: 100vh; /* Minimum height equals viewport height */
+  padding: 20px; /* Add 20px padding on all sides */
+}
+
+h1 {
+  font-family: "Edu NSW ACT Hand Pre", cursive; /* Handwritten-style font for headings */
+  font-optical-sizing: auto; /* Automatically adjust font rendering */
+  font-weight: 500; /* Medium font weight */
+  font-style: normal; /* Normal (not italic) font style */
+  color: white; /* White text color */
+  text-shadow: 0 0 5px black; /* Black shadow with 5px blur radius */
+  margin-bottom: 30px; /* 30px space below heading */
+  font-size: 2.5rem; /* Large font size (40px) */
+}
+
+.arabic-text {
+  font-family: "Amiri", serif; /* Arabic-specific serif font */
+  font-weight: 400; /* Normal font weight */
+  font-style: normal; /* Normal (not italic) font style */
+  font-size: 1.8rem; /* Large font size for Arabic text */
+  line-height: 2.2; /* Spacing between lines (2.2 times font size) */
+  text-align: center; /* Right-align text (proper for Arabic) */
+  margin-bottom: 20px; /* 20px space below Arabic text */
+}
+
+h3,
+h4 {
+  /* Style both h3 and h4 elements */
+  background: linear-gradient(
+    to bottom,
+    #ac5d5d,
+    #65604d
+  ); /* Gradient from reddish to brown */
+  -webkit-background-clip: text; /* Clip background to text shape (WebKit browsers) */
+  -webkit-text-fill-color: transparent; /* Make text transparent to show background */
+  background-clip: text; /* Standard property for clipping background to text */
+}
+
+/* Card Container Styles */
+.benefits-section,
+.salawat-section {
+  /* Style both section containers */
+  display: block; /* Display as block element */
+  margin-right: auto; /* Auto right margin for centering */
+  margin-left: auto; /* Auto left margin for centering */
+  width: 400px; /* Fixed width of 400px */
+  margin-bottom: 60px; /* 60px space below each section */
+  position: relative; /* Relative positioning for child elements */
+}
+
+.salawat-section h1 {
+  font-size: 1.8rem; /* Smaller font size for salawat section heading */
+  margin-bottom: 20px; /* 20px space below heading */
+}
+
+/* Card Styles */
+.card {
+  width: 450px; /* Fixed width matching container */
+  /* height: 350px;  */
+  border: none; /* Remove default border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow with offset and spread */
+  background-color: #f1ede7; /* Light cream background */
+  padding: 30px; /* 30px padding inside card */
+  border-radius: 10px; /* Rounded corners with 10px radius */
+  transform: scale(0.9); /* Scale down to 90% size (inactive cards) */
+  opacity: 0.6; /* 60% opacity (semi-transparent) */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth animation over 0.5s */
+  position: absolute; /* Position relative to parent container */
+  left: 0;
+  z-index: 1; /* Layer order (lower number = behind) */
+  overflow-y: auto; /* Add scrollbar if content exceeds card height */
+  display: flex; /* Use flexbox for content layout */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Distribute content evenly */
+}
+
+.card.active {
+  /* Active/visible card styling */
+  transform: scale(1); /* Full size (100%) */
+  opacity: 1; /* Fully opaque */
+  z-index: 10; /* Higher layer order (in front) */
+  position: relative; /* Relative positioning (in document flow) */
+}
+
+.card.prev {
+  /* Previous card styling */
+  transform: translateX(-100%) scale(0.8); /* Move left 100% and scale to 80% */
+  opacity: 0.1; /* 30% opacity (very faded) */
+}
+
+.card.next {
+  /* Next card styling */
+  transform: translateX(100%) scale(0.8); /* Move right 100% and scale to 80% */
+  opacity: 0; /* 30% opacity (very faded) */
+}
+.card:not(.active):not(.prev):not(.next) {
+  opacity: 0;
+  transform: scale(0.9);
+  z-index: 0;
+  position: absolute;
+}
+/* Translation Text */
+.translation-text {
+  font-size: 1.1rem; /* Slightly larger than normal text */
+  line-height: 1.6; /* Line spacing (1.6 times font size) */
+  margin-bottom: 15px; /* 15px space below translation */
+  font-style: italic; /* Italic text style */
+}
+
+/* Reference */
+.reference {
+  text-align: center; /* Center the reference text */
+  margin-top: 20px; /* 20px space above reference */
+}
+
+.reference a {
+  /* Style links in reference */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: bold; /* Make link text bold */
+  transition: color 0.3s ease; /* Smooth color change over 0.3s */
+}
+
+.reference a:hover {
+  text-decoration: underline !important;
+  text-decoration-color: #65604d !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+
+/* Navigation Styles */
+.navigation {
+  display: flex; /* Use flexbox layout */
+  justify-content: center; /* Center items horizontally */
+  gap: 10px; /* 10px space between buttons */
+  margin-top: 20px; /* 80px space above navigation */
+  z-index: 20; /* High layer order (in front of cards) */
+  position: relative; /* Relative positioning */
+}
+
+.navigation button {
+  margin-top: 20px; /* 20px space above button */
+  margin-left: 5px; /* 5px space on left */
+  margin-right: 5px; /* 5px space on right */
+  background-color: #f1ede7; /* Light cream background */
+  color: black; /* Black text color */
+  border: none; /* Remove default border */
+  box-shadow: 0 0 5px black; /* Black shadow with 5px blur */
+  padding: 0.6rem 1.2rem; /* Vertical padding 0.6rem, horizontal 1.2rem */
+  border-radius: 70px; /* Very rounded corners (pill shape) */
+  font-size: 1.2rem; /* Large font size */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background 0.3s; /* Smooth background change over 0.3s */
+}
+
+.navigation button:hover {
+  /* Style when hovering over button */
+  background-color: darkgray; /* Change to dark gray background */
+}
+
+.navigation button:disabled {
+  /* Style for disabled buttons */
+  opacity: 0.5; /* 50% opacity (faded) */
+  cursor: not-allowed; /* Show "not allowed" cursor */
+  background-color: #f1ede7; /* Keep original background color */
+}
+
+.navigation button:disabled:hover {
+  /* Disabled button hover state */
+  background-color: #f1ede7; /* Don't change color when hovering disabled button */
+}
+
+/* Counter Styles */
+.counter {
+  text-align: center; /* Center the counter text */
+  color: #65604d; /* Brown text color */
+  margin-top: 15px; /* 15px space above counter */
+  font-size: 1.1rem; /* Slightly larger font */
+  font-weight: bold; /* Bold text */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Card container for proper positioning */
+.cards-container {
+  position: relative; /* Relative positioning for absolute children */
+  min-height: 450px; /* Increased minimum height to accommodate fixed card size and shadow */
+  overflow: visible; /* Show shadows that extend beyond boundaries */
+  padding: 25px; /* Add padding to prevent shadow clipping */
+  margin: -25px; /* Negative margin to offset the padding */
+}
+
+#ayah-img {
+  /* Specific styling for ayah image */
+  width: 400px; /* Fixed width */
+  box-shadow: 0 0 5px #65604d; /* Brown shadow */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Apply styles only on screens 768px or smaller */
+  .benefits-section,
+  .salawat-section {
+    width: 90%; /* Use 90% of screen width instead of fixed 400px */
+    max-width: 400px; /* But don't exceed 400px */
+  }
+
+  .card {
+    width: 100%; /* Full width of container */
+  }
+
+  .arabic-text {
+    font-size: 1.4rem; /* Smaller font size for mobile */
+    line-height: 1.8; /* Tighter line spacing */
+  }
+
+  .translation-text {
+    font-size: 1rem; /* Standard font size for mobile */
+  }
+
+  h1 {
+    font-size: 2rem; /* Smaller heading size for mobile */
+  }
+}
